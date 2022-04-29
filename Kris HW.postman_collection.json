@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "bf77631a-b014-4103-b09a-21dbf2ca41c0",
+		"name": "Kris HW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "First",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include\r",
+							"    (\"This is the first responce from server!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Check status code is 200\", function() {\r",
+							"pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test (\"Check name\", function () {\r",
+							"pm.expect(jsonData.name).to.eql(\"Kirill\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check age\", function () {\r",
+							"    pm.expect(jsonData.age).to.eql(\"26\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check salary\", function () {\r",
+							"    pm.expect(jsonData.salary).to.eql(11112);\r",
+							"});\r",
+							"\r",
+							"var reqBody = request.data;\r",
+							"\r",
+							"pm.test(\"Check your name\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(reqBody.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check your age\", function () {\r",
+							"    pm.expect(jsonData.age).to.eql(reqBody.age);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check your salary\", function () {\r",
+							"    pm.expect(jsonData.salary).to.eql(reqBody.salary);\r",
+							"});\r",
+							"\r",
+							"var resp = jsonData.family;\r",
+							"console.log('resp= ' , resp)\r",
+							"\r",
+							"pm.test(\"Check u_salary_1_5_year = salary*4\", function () {\r",
+							"pm.expect(jsonData.family.u_salary_1_5_year).to.eql(reqBody.salary*4);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Kirill",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "26",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "11112",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
